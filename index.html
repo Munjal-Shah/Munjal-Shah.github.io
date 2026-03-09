@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Munjal Shah — Senior Member of Technical Staff, Oracle</title>
+  <meta name="description" content="Munjal Shah — Senior Member of Technical Staff at Oracle. Full Stack Developer based in the San Francisco Bay Area."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --cream:   #F7F4EE;
+      --cream2:  #F0EDE5;
+      --cream3:  #E6E0D4;
+      --paper:   #FDFCF9;
+      --ink:     #1A1814;
+      --ink2:    #3D3A35;
+      --ink3:    #7A766E;
+      --ink4:    #B0AB9F;
+      --gold:    #A0845C;
+      --gold-l:  #C4A882;
+      --gold-ll: #EAD9C4;
+      --border:  rgba(26,24,20,0.09);
+    }
+
+    /* ── SCROLL CONTAINER ── */
+    body {
+      background: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    #scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── FLOATING PILL NAV ── */
+    #nav {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 999;
+      display: flex; align-items: center; gap: 0;
+      background: rgba(253,252,249,0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 8px;
+      box-shadow: 0 4px 28px rgba(26,24,20,0.10);
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 1rem;
+      color: var(--ink); padding: 0 14px 0 8px;
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; font-weight: 400; letter-spacing: 0.04em;
+      color: var(--ink3); padding: 6px 12px; border-radius: 100px;
+      transition: background 0.18s, color 0.18s; display: block;
+      cursor: pointer;
+    }
+    .nav-links a:hover { background: var(--cream2); color: var(--ink); }
+    .nav-links a.active { background: var(--cream3); color: var(--ink); }
+    .nav-cta {
+      margin-left: 4px;
+      background: var(--ink) !important;
+      color: var(--paper) !important;
+      font-weight: 500 !important;
+    }
+    .nav-cta:hover { background: var(--ink2) !important; }
+
+    /* ── SIDE DOTS ── */
+    #dots {
+      position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
+      z-index: 998; display: flex; flex-direction: column; gap: 12px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--ink4); cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dot.active { background: var(--gold); transform: scale(1.5); }
+    .dot-label {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      font-family: 'Courier Prime', monospace; font-size: 0.65rem;
+      color: var(--ink3); letter-spacing: 0.08em; opacity: 0;
+      transition: opacity 0.2s; pointer-events: none; white-space: nowrap;
+    }
+    #dots:hover .dot-label { opacity: 1; }
+
+    /* ── PAGE 1: HERO ── */
+    #hero {
+      background: var(--cream);
+      justify-content: center;
+      flex-direction: column;
+    }
+    .hero-bg-text {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16vw, 22vw, 26vw);
+      font-weight: 700; line-height: 1;
+      color: rgba(26,24,20,0.04);
+      white-space: nowrap;
+      pointer-events: none; user-select: none;
+      letter-spacing: -0.03em;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 5%;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold-ll);
+    }
+    h1.hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(5rem, 13vw, 14rem);
+      line-height: 0.88; letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    h1.hero-name em { font-style: italic; color: var(--gold); }
+    .hero-tagline {
+      margin-top: 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+      color: var(--ink3); letter-spacing: 0.05em;
+    }
+    .hero-tagline strong { font-weight: 500; color: var(--ink2); }
+    .hero-scroll-hint {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--ink4);
+      animation: hint 2s ease infinite;
+    }
+    .scroll-arrow { width: 16px; height: 16px; border-right: 1px solid var(--ink4); border-bottom: 1px solid var(--ink4); transform: rotate(45deg); margin-top: -4px; }
+    @keyframes hint { 0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(4px)} }
+
+    /* ── PAGE 2: ABOUT ── */
+    #about {
+      background: var(--paper);
+    }
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%; width: 100%;
+    }
+    .about-left {
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 8% 8% 8% 8%;
+      position: relative; overflow: hidden;
+    }
+    .about-left::before {
+      content: '02';
+      position: absolute; top: -2rem; left: -1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18rem; font-weight: 700; line-height: 1;
+      color: rgba(255,255,255,0.03); pointer-events: none;
+    }
+    .about-sec-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+    }
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; line-height: 1.3; color: var(--paper);
+      letter-spacing: -0.01em;
+    }
+    .about-quote em { font-style: italic; color: var(--gold-l); }
+    .about-divider { width: 40px; height: 1px; background: var(--gold); margin: 2.5rem 0; }
+    .about-body-text {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+      line-height: 1.9; max-width: 400px;
+    }
+    .about-right {
+      background: var(--paper);
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 8%;
+      position: relative; overflow: hidden;
+    }
+    .about-right::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 60%; height: 60%;
+      background: radial-gradient(circle at top right, var(--gold-ll) 0%, transparent 70%);
+      opacity: 0.4; pointer-events: none;
+    }
+    .about-facts-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--ink);
+      letter-spacing: 0.01em; margin-bottom: 2rem;
+    }
+    .fact-row {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .fact-row:last-child { border-bottom: 1px solid var(--border); }
+    .fact-k {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink4); min-width: 110px; padding-top: 2px;
+    }
+    .fact-v { font-size: 0.88rem; color: var(--ink); font-weight: 400; }
+    .fact-v a { color: var(--gold); }
+    .fact-v.open { color: #5A8A6A; font-weight: 500; }
+    .about-dl {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 2.5rem; padding: 0.7rem 1.5rem;
+      background: var(--ink); color: var(--paper);
+      border-radius: 100px; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.04em; transition: background 0.2s;
+    }
+    .about-dl:hover { background: var(--ink2); }
+
+    #experience {
+      background: var(--cream);
+      align-items: stretch;
+      height: auto !important;
+      min-height: 100vh;
+      overflow: visible !important;
+    }
+    .exp-layout {
+      display: flex; flex-direction: column;
+      width: 100%;
+    }
+    .exp-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      padding: 2.5% 6%;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-header-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .exp-header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      line-height: 1; color: var(--ink); letter-spacing: -0.02em;
+    }
+    .exp-header-title em { font-style: italic; }
+    .exp-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 300; color: var(--gold-ll); line-height: 1;
+    }
+    .exp-body {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: calc(100vh - 120px);
+    }
+    .exp-list-col {
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      padding: 4% 0 4% 6%;
+    }
+    .exp-item {
+      padding: 1.2rem 1.5rem 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: padding-left 0.25s;
+      position: relative;
+    }
+    .exp-item::before {
+      content: ''; position: absolute; left: -1px; top: 0; bottom: 0;
+      width: 2px; background: var(--gold);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.25s;
+    }
+    .exp-item.sel::before { transform: scaleY(1); }
+    .exp-item.sel { padding-left: 1.1rem; }
+    .exp-item-period {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink4);
+      margin-bottom: 0.25rem; text-transform: uppercase;
+    }
+    .exp-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--ink); line-height: 1.2;
+      transition: color 0.2s;
+    }
+    .exp-item.sel .exp-item-title, .exp-item:hover .exp-item-title { color: var(--gold); }
+    .exp-item-co { font-size: 0.75rem; color: var(--ink3); margin-top: 0.15rem; }
+    .exp-detail-col {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6% 7%;
+      position: relative; overflow: hidden;
+    }
+    .exp-detail-col::before {
+      content: '';
+      position: absolute; bottom: -4rem; right: -4rem;
+      width: 40vw; height: 40vw; border-radius: 50%;
+      background: radial-gradient(circle, var(--gold-ll) 0%, transparent 65%);
+      opacity: 0.5; pointer-events: none;
+    }
+    .exp-inline-detail { display: none; }
+    .exp-pane { display: none; }
+    .exp-pane.active { display: block; }
+    .exp-detail-period {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem; letter-spacing: 0.14em; color: var(--ink4);
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .exp-detail-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300;
+      line-height: 1.1; color: var(--ink); letter-spacing: -0.02em;
+    }
+    .exp-detail-title em { font-style: italic; color: var(--gold); }
+    .exp-detail-co { font-size: 0.85rem; color: var(--gold); margin: 0.4rem 0 1.5rem; font-weight: 500; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.85rem; color: var(--ink2); padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(26,24,20,0.05);
+      display: flex; gap: 0.75rem; align-items: flex-start; line-height: 1.6;
+    }
+    .exp-bullets li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.25rem; }
+    .etag {
+      padding: 0.2rem 0.6rem; border: 1px solid var(--border);
+      border-radius: 4px; font-size: 0.66rem;
+      font-family: 'Courier Prime', monospace; color: var(--ink3);
+      background: var(--cream2);
+    }
+
+    /* ── PAGE 4: PROJECTS ── */
+    #projects {
+      background: var(--paper);
+      align-items: stretch;
+    }
+    .projects-layout {
+      display: flex; flex-direction: column;
+      height: 100%; width: 100%;
+    }
+    .projects-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      padding: 4% 6% 2.5%;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .projects-header-left {}
+    .proj-sec-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .proj-sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300;
+      line-height: 1; color: var(--ink); letter-spacing: -0.03em;
+    }
+    .proj-sec-title em { font-style: italic; }
+    .proj-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 300; color: var(--gold-ll);
+      line-height: 1;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      flex: 1;
+    }
+    .proj-card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 6% 5%;
+      display: flex; flex-direction: column;
+      transition: background 0.25s;
+      cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .proj-card:nth-child(3n) { border-right: none; }
+    .proj-card:nth-last-child(-n+3) { border-bottom: none; }
+    .proj-card::after {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-l));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .proj-card:hover { background: var(--cream2); }
+    .proj-card:hover::after { transform: scaleX(1); }
+    .proj-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem; letter-spacing: 0.12em; color: var(--ink4);
+      margin-bottom: 1rem;
+    }
+    .proj-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600; color: var(--ink);
+      line-height: 1.2; flex: 1;
+    }
+    .proj-desc {
+      font-size: 0.78rem; color: var(--ink3); line-height: 1.7;
+      margin-top: 0.6rem; flex: 2;
+    }
+    .proj-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+    .proj-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+    .pchip { padding: 0.15rem 0.5rem; border-radius: 3px; font-family: 'Courier Prime', monospace; font-size: 0.6rem; }
+    .c-gold { background: rgba(160,132,92,0.12); color: var(--gold); }
+    .c-sage { background: rgba(80,130,100,0.1); color: #4F8264; }
+    .c-slate { background: rgba(80,100,130,0.1); color: #5070A0; }
+    .proj-link {
+      font-size: 0.9rem; color: var(--ink4);
+      transition: color 0.2s, transform 0.2s; display: inline-block;
+    }
+    .proj-card:hover .proj-link { color: var(--gold); transform: translate(2px,-2px); }
+
+    /* ── PAGE 5: EDUCATION ── */
+    #education {
+      background: var(--cream);
+      align-items: stretch;
+    }
+    .edu-layout {
+      display: flex; flex-direction: column;
+      height: 100%; width: 100%;
+    }
+    .edu-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      flex: 1;
+    }
+    .edu-card-block {
+      padding: 5% 7% 2% 7%;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .edu-card-block:first-child {
+      border-right: 1px solid var(--border);
+    }
+    .edu-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 700; line-height: 1;
+      color: rgba(26,24,20,0.05);
+      position: absolute; top: 1rem; left: 5%;
+      pointer-events: none; user-select: none;
+    }
+    .edu-badge-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.9rem; border: 1px solid var(--gold-ll);
+      border-radius: 100px; font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem; color: var(--gold); letter-spacing: 0.08em;
+      margin-bottom: 1.25rem; width: fit-content;
+    }
+    .edu-badge-pill.ug { border-color: var(--border); color: var(--ink4); }
+    .edu-deg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300;
+      color: var(--ink); line-height: 1.2; margin-bottom: 0.4rem;
+    }
+    .edu-school { font-size: 0.85rem; color: var(--gold); margin-bottom: 0.2rem; }
+    .edu-card-block:nth-child(2) .edu-school { color: var(--ink3); }
+    .edu-period {
+      font-family: 'Courier Prime', monospace; font-size: 0.7rem;
+      color: var(--ink4); margin-bottom: 1.1rem;
+    }
+    .edu-courses { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .ecourse {
+      padding: 0.25rem 0.6rem; font-size: 0.7rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      background: var(--paper); color: var(--ink3);
+    }
+    .edu-header {
+      border-bottom: 1px solid var(--border);
+      padding: 2% 7%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .edu-header-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .edu-header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300; color: var(--ink);
+      font-style: italic; letter-spacing: -0.01em;
+    }
+    .edu-gpa-area { display: flex; gap: 3rem; }
+    .edu-stat { text-align: center; }
+    .edu-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 300; color: var(--ink); line-height: 1;
+    }
+    .edu-stat-label { font-size: 0.7rem; color: var(--ink4); font-family: 'Courier Prime', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── PAGE 6: CONTACT ── */
+    #contact {
+      background: var(--ink);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #contact::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60vw; height: 60vh;
+      background: radial-gradient(circle, rgba(160,132,92,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .contact-inner { position: relative; z-index: 2; padding: 8% 5% 5%; max-width: 900px; width: 100%; }
+    .contact-sec-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 8rem); font-weight: 300;
+      line-height: 0.9; color: var(--paper); letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .contact-heading em { font-style: italic; color: var(--gold-l); }
+    .contact-sub {
+      font-size: 0.95rem; color: rgba(255,255,255,0.45);
+      max-width: 480px; margin: 0 auto 3.5rem; line-height: 1.8;
+    }
+    .contact-links {
+      display: flex; flex-direction: row; gap: 1rem;
+      justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem;
+    }
+    .contact-link-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      color: rgba(255,255,255,0.6); font-size: 0.82rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .contact-link-item:hover { border-color: var(--gold); color: var(--gold); background: rgba(160,132,92,0.06); }
+    .contact-link-item svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .contact-divider {
+      width: 1px; height: 40px; background: rgba(255,255,255,0.1);
+      margin: 0 auto 3.5rem;
+    }
+    .contact-socials {
+      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .soc-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.4);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .soc-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .soc-btn svg { width: 16px; height: 16px; }
+    .contact-footer-line {
+      margin-top: 3.5rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.2); text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    .page-in .fade-up {
+      animation: fadeUp 0.7s ease both;
+    }
+    .page-in .fade-up-d1 { animation: fadeUp 0.7s 0.1s ease both; }
+    .page-in .fade-up-d2 { animation: fadeUp 0.7s 0.2s ease both; }
+    .page-in .fade-up-d3 { animation: fadeUp 0.7s 0.3s ease both; }
+    .page-in .fade-up-d4 { animation: fadeUp 0.7s 0.4s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      #scroll-container { overflow-y: auto; }
+      .page { height: auto; min-height: 100vh; }
+      .about-split { grid-template-columns: 1fr; }
+      .about-left { min-height: 50vh; }
+
+      /* ── EXPERIENCE MOBILE ── */
+      #experience { height: auto !important; }
+      .exp-body { grid-template-columns: 1fr; min-height: unset; }
+      .exp-list-col { border-right: none; padding: 0; }
+      .exp-detail-col { display: none; }
+
+      /* each item becomes a full card */
+      .exp-item {
+        padding: 1rem 5%;
+        border-bottom: 1px solid var(--border);
+        border-radius: 0;
+      }
+      .exp-item::before { display: none; }
+      .exp-item.sel {
+        background: var(--cream2);
+        padding-left: 5%;
+      }
+      .exp-item-period { display: block; }
+      .exp-item-co { display: block; }
+      .exp-item.sel .exp-item-title { color: var(--gold); }
+
+      /* inline detail rendered inside each card on mobile */
+      .exp-inline-detail { display: none; padding: 0.75rem 0 0.5rem; }
+      .exp-item.sel .exp-inline-detail { display: block; }
+      .exp-inline-bullets { list-style: none; margin-bottom: 0.75rem; }
+      .exp-inline-bullets li {
+        font-size: 0.8rem; color: var(--ink2); padding: 0.3rem 0;
+        border-bottom: 1px solid rgba(26,24,20,0.05);
+        display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.55;
+      }
+      .exp-inline-bullets li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: 0.75rem; }
+      .exp-inline-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .proj-card {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
+      }
+      .proj-card:last-child {
+        border-bottom: none !important;
+      }
+      .edu-top { grid-template-columns: 1fr; }
+      .edu-card-block:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+      #dots { display: none; }
+      .nav-links li:not(:last-child) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING PILL NAV -->
+<nav id="nav">
+  <div class="nav-brand">Munjal Shah</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="goTo(0)">Home</a></li>
+    <li><a onclick="goTo(1)">About</a></li>
+    <li><a onclick="goTo(2)">Experience</a></li>
+    <li><a onclick="goTo(3)">Projects</a></li>
+    <li><a onclick="goTo(4)">Education</a></li>
+    <li><a onclick="goTo(5)" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- SIDE DOTS -->
+<nav id="dots">
+  <div class="dot active" onclick="goTo(0)" title="Home"><span class="dot-label">Home</span></div>
+  <div class="dot" onclick="goTo(1)" title="About"><span class="dot-label">About</span></div>
+  <div class="dot" onclick="goTo(2)" title="Experience"><span class="dot-label">Experience</span></div>
+  <div class="dot" onclick="goTo(3)" title="Projects"><span class="dot-label">Projects</span></div>
+  <div class="dot" onclick="goTo(4)" title="Education"><span class="dot-label">Education</span></div>
+  <div class="dot" onclick="goTo(5)" title="Contact"><span class="dot-label">Contact</span></div>
+</nav>
+
+<!-- SCROLL CONTAINER -->
+<div id="scroll-container">
+
+  <!-- PAGE 1: HERO -->
+  <section class="page" id="hero">
+    <div class="hero-bg-text">MS</div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow fade-up">Senior Member of Technical Staff · Oracle</div>
+      <h1 class="hero-name fade-up-d1">Munjal<br><em>Shah</em></h1>
+      <p class="hero-tagline fade-up-d2">
+        <strong>Software Engineer</strong> · Full Stack Developer · Java Specialist · Based in the <strong>SF Bay Area</strong>
+      </p>
+    </div>
+    <div class="hero-scroll-hint">Scroll<div class="scroll-arrow"></div></div>
+  </section>
+
+  <!-- PAGE 2: ABOUT -->
+  <section class="page" id="about">
+    <div class="about-split">
+      <div class="about-left">
+        <div class="about-sec-label">// 02 — About Me</div>
+        <blockquote class="about-quote">
+          Any fool can write code<br>a computer understands.<br>
+          <em>I write code humans can read.</em>
+        </blockquote>
+        <div class="about-divider"></div>
+        <p class="about-body-text">Senior Member of Technical Staff at Oracle, building robust and scalable systems. M.S. Computer Science from SUNY Binghamton. So deep into Agile that every time I see something wrong, I think — "I wish I could raise a ticket for that."</p>
+      </div>
+      <div class="about-right">
+        <div class="about-facts-title">Quick Facts</div>
+        <div class="fact-row"><span class="fact-k">Role</span><span class="fact-v">Sr. Member of Technical Staff</span></div>
+        <div class="fact-row"><span class="fact-k">Company</span><span class="fact-v">Oracle</span></div>
+        <div class="fact-row"><span class="fact-k">Degree</span><span class="fact-v">M.S. Computer Science</span></div>
+        <div class="fact-row"><span class="fact-k">University</span><span class="fact-v">SUNY Binghamton</span></div>
+        <div class="fact-row"><span class="fact-k">Location</span><span class="fact-v">SF Bay Area, CA</span></div>
+        <div class="fact-row"><span class="fact-k">Email</span><span class="fact-v"><a href="mailto:shahmunjals@gmail.com">shahmunjals@gmail.com</a></span></div>
+        <div class="fact-row"><span class="fact-k">Status</span><span class="fact-v open">● Open to Opportunities</span></div>
+        <a href="https://drive.google.com/file/d/12rn8jFy08SfwplGLAMCIx3nJa5PtaYZ1/view?usp=sharing" target="_blank" class="about-dl">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Résumé
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: EXPERIENCE -->
+  <section class="page" id="experience">
+    <div class="exp-layout">
+      <div class="exp-header">
+        <div>
+          <div class="exp-header-label">// 03 — Experience</div>
+          <div class="exp-header-title">Where I've <em>worked.</em></div>
+        </div>
+        <div class="exp-count">06</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-list-col">
+          <div class="exp-item sel" onclick="window.selExp('oraclehealth', this)">
+            <div class="exp-item-period">Oct 2025 — Present</div>
+            <div class="exp-item-title">Senior Member of Technical Staff</div>
+            <div class="exp-item-co">Oracle Health · Semantic Index</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Building control plane services for Oracle Health's Semantic Index — powering semantic reasoning across clinical data domains including diagnoses, labs, and medications</li>
+                <li>Contributing to the knowledge graph layer that maps clinical entities from EHRs to SNOMED/ICD10 ontologies</li>
+                <li>Designing scalable backend services supporting real-time clinical data indexing underpinning AI-driven tools at enterprise scale</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">Knowledge Graphs</span></div>
+            </div>
+          </div>
+          <div class="exp-item" onclick="window.selExp('oraclebasedb', this)">
+            <div class="exp-item-period">Jul 2021 — Oct 2025</div>
+            <div class="exp-item-title">Senior Member of Technical Staff</div>
+            <div class="exp-item-co">Oracle · BaseDB Control Plane</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Contributed to Oracle Base Database Service (BaseDB) on OCI, engineering lifecycle operations — provisioning, patching, backup and recovery — at cloud scale</li>
+                <li>Engineered CLI commands to automate renaming and purging of obsolete database backups, optimizing storage across distributed OCI infrastructure</li>
+                <li>Delivered zero-downtime software deployments across production OCI environments using TeamCity CI/CD pipelines</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">TeamCity</span><span class="etag">Bitbucket</span></div>
+            </div>
+          </div>
+          <div class="exp-item" onclick="window.selExp('benefitfocus', this)">
+            <div class="exp-item-period">May 2021 — Jul 2021</div>
+            <div class="exp-item-title">Software Engineer</div>
+            <div class="exp-item-co">Benefitfocus</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Configured and validated software applications end-to-end, ensuring functional correctness across multiple environments</li>
+                <li>Identified and resolved logic defects through systematic debugging, improving codebase stability</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">Spring Boot</span><span class="etag">Java</span><span class="etag">REST API</span><span class="etag">Git</span></div>
+            </div>
+          </div>
+          <div class="exp-item" onclick="window.selExp('skillrelays', this)">
+            <div class="exp-item-period">Jun 2020 — Dec 2020</div>
+            <div class="exp-item-title">Full Stack Developer Intern</div>
+            <div class="exp-item-co">Skill Relays</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Architected and delivered a full-stack CMS platform enabling administrators to manage content and volunteer postings independently</li>
+                <li>Built end-to-end CI/CD pipelines on Azure and debugged 5,000+ lines of legacy code</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">Azure</span></div>
+            </div>
+          </div>
+          <div class="exp-item" onclick="window.selExp('suny', this)">
+            <div class="exp-item-period">Sep 2019 — May 2020</div>
+            <div class="exp-item-title">Research Project Assistant</div>
+            <div class="exp-item-co">The Research Foundation for SUNY</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Maintained university web infrastructure using PHP and OmniUpdate CMS</li>
+                <li>Provided technical support to 50+ faculty and staff remotely and on-site</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">PHP</span><span class="etag">JavaScript</span><span class="etag">HTML/CSS</span></div>
+            </div>
+          </div>
+          <div class="exp-item" onclick="window.selExp('elite', this)">
+            <div class="exp-item-period">Jun 2017 — Nov 2018</div>
+            <div class="exp-item-title">Jr. Software Engineer</div>
+            <div class="exp-item-co">Elite Infoworld</div>
+            <div class="exp-inline-detail">
+              <ul class="exp-inline-bullets">
+                <li>Built customer loyalty and in-app purchase features for an Android application</li>
+                <li>Deployed a scalable AWS S3 storage solution and a full job-posting app for seekers and employers</li>
+              </ul>
+              <div class="exp-inline-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="exp-detail-col">
+          <div class="exp-pane active" id="ep-oraclehealth">
+            <div class="exp-detail-period">October 2025 — Present</div>
+            <div class="exp-detail-title">Senior Member of<br><em>Technical Staff</em></div>
+            <div class="exp-detail-co">Oracle Health · Semantic Index Control Plane</div>
+            <ul class="exp-bullets">
+              <li>Building control plane services for Oracle Health's Semantic Index — the foundational AI infrastructure powering semantic reasoning across clinical data domains including diagnoses, labs, medications, and payer rules</li>
+              <li>Contributing to the knowledge graph layer that maps clinical entities from EHRs to SNOMED/ICD10 ontologies, enabling context-aware insights for Oracle Health's Clinical AI Agent</li>
+              <li>Designing and maintaining scalable backend services supporting real-time clinical data indexing and retrieval, underpinning AI-driven tools that reduce physician documentation burden at enterprise scale</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">Clinical NLP</span><span class="etag">Knowledge Graphs</span></div>
+          </div>
+          <div class="exp-pane" id="ep-oraclebasedb">
+            <div class="exp-detail-period">July 2021 — October 2025</div>
+            <div class="exp-detail-title">Senior Member of<br><em>Technical Staff</em></div>
+            <div class="exp-detail-co">Oracle · Base Database Service Control Plane</div>
+            <ul class="exp-bullets">
+              <li>Contributed to the control plane of Oracle Base Database Service (BaseDB) on OCI, engineering lifecycle operations — provisioning, patching, backup and recovery — for customer Oracle databases at cloud scale</li>
+              <li>Engineered CLI commands to automate renaming and purging of obsolete database backups, optimizing storage utilization across distributed OCI infrastructure</li>
+              <li>Developed and maintained RESTful control plane APIs managing database system configurations and operational workflows across OCI regions</li>
+              <li>Delivered large-scale, zero-downtime software deployments across production OCI environments using TeamCity CI/CD pipelines</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">TeamCity</span><span class="etag">Bitbucket</span><span class="etag">Shepherd</span></div>
+          </div>
+          <div class="exp-pane" id="ep-benefitfocus">
+            <div class="exp-detail-period">May 2021 — July 2021</div>
+            <div class="exp-detail-title">Software<br><em>Engineer</em></div>
+            <div class="exp-detail-co">Benefitfocus</div>
+            <ul class="exp-bullets">
+              <li>Configured and validated software applications end-to-end, ensuring functional correctness across multiple environments</li>
+              <li>Identified and resolved logic and coding defects through systematic debugging, improving overall codebase stability</li>
+              <li>Monitored production systems proactively, reducing incident response time by diagnosing root causes and applying targeted fixes</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">Spring Boot</span><span class="etag">Java</span><span class="etag">REST API</span><span class="etag">Git</span></div>
+          </div>
+          <div class="exp-pane" id="ep-skillrelays">
+            <div class="exp-detail-period">June 2020 — December 2020</div>
+            <div class="exp-detail-title">Full Stack<br><em>Developer Intern</em></div>
+            <div class="exp-detail-co">Skill Relays</div>
+            <ul class="exp-bullets">
+              <li>Architected and delivered a full-stack content management platform enabling administrators to publish volunteer opportunities and manage site content independently</li>
+              <li>Built and maintained end-to-end CI/CD pipelines on Azure, automating the full SDLC from commit to production</li>
+              <li>Integrated Maven dependency management across 5 internal applications, standardizing builds and reducing integration friction</li>
+              <li>Debugged and refactored 5,000+ lines of legacy code, improving maintainability and eliminating critical runtime errors</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">NodeJS</span><span class="etag">Azure</span></div>
+          </div>
+          <div class="exp-pane" id="ep-suny">
+            <div class="exp-detail-period">September 2019 — May 2020</div>
+            <div class="exp-detail-title">Research Project<br><em>Assistant</em></div>
+            <div class="exp-detail-co">The Research Foundation for SUNY</div>
+            <ul class="exp-bullets">
+              <li>Maintained and enhanced university web infrastructure using PHP and OmniUpdate CMS, improving content accuracy across departmental pages</li>
+              <li>Provided technical support to 50+ faculty and staff, resolving hardware and software issues both remotely and on-site</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">PHP</span><span class="etag">JavaScript</span><span class="etag">HTML/CSS</span><span class="etag">OmniUpdate</span></div>
+          </div>
+          <div class="exp-pane" id="ep-elite">
+            <div class="exp-detail-period">June 2017 — November 2018</div>
+            <div class="exp-detail-title">Jr. Software<br><em>Engineer</em></div>
+            <div class="exp-detail-co">Elite Infoworld</div>
+            <ul class="exp-bullets">
+              <li>Developed customer loyalty and in-app purchase features for an existing Android application, directly improving user retention and monetization</li>
+              <li>Designed and deployed a scalable AWS S3 data storage solution in production, improving reliability and access speed for application assets</li>
+              <li>Built a full-featured job-posting Android app from scratch — supporting both job seekers and employers — from requirements gathering through deployment</li>
+            </ul>
+            <div class="exp-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS</span><span class="etag">Android Studio</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4: PROJECTS -->
+  <section class="page" id="projects">
+    <div class="projects-layout">
+      <div class="projects-header">
+        <div class="projects-header-left">
+          <div class="proj-sec-label">// 04 — Projects</div>
+          <div class="proj-sec-title">Selected <em>Work</em></div>
+        </div>
+        <div class="proj-count">06</div>
+      </div>
+      <div class="projects-grid">
+        <div class="proj-card">
+          <div class="proj-num">01</div>
+          <div class="proj-title">Flight Cancellations &amp; Delays Analysis</div>
+          <div class="proj-desc">Engineered a data pipeline using Python and MongoDB to analyze 5M+ flight records from 2015, surfacing actionable patterns in cancellation causes and delay hotspots across US carriers.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Python</span><span class="pchip c-sage">MongoDB</span></div>
+            <a href="https://github.com/Munjal-Shah/Analysis-of-Flight-Cancelation-Delays-in-2015" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-num">02</div>
+          <div class="proj-title">Data Mining Algorithms</div>
+          <div class="proj-desc">Implemented and compared PCA, ICA, and K-Means clustering on real-world datasets, reducing feature dimensionality while preserving key variance for downstream analysis.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Python</span><span class="pchip c-slate">PCA/ICA</span></div>
+            <a href="https://github.com/Munjal-Shah/Data-Mining-CS535" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-num">03</div>
+          <div class="proj-title">Design Patterns in Java</div>
+          <div class="proj-desc">Built a reference implementation of 15+ GoF design patterns in Java, each demonstrated in a realistic project context — a portfolio of architectural best practices.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">OOP</span></div>
+            <a href="https://github.com/Munjal-Shah/Design-Patterns" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-num">04</div>
+          <div class="proj-title">Currency Converter</div>
+          <div class="proj-desc">Developed a Spring Boot web application that fetches real-time exchange rates via REST API, featuring live data refresh, multi-currency support, and a clean responsive interface.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">Spring Boot</span></div>
+            <a href="https://github.com/Munjal-Shah/Currency-Converter" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-num">05</div>
+          <div class="proj-title">Python Projects Bundle</div>
+          <div class="proj-desc">Shipped three independent Python utilities — a URL shortener, a YouTube video downloader, and a social media profile scraper — each with a clean CLI interface and robust error handling.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Python</span></div>
+            <a href="https://github.com/Munjal-Shah/PyProjects" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-num">06</div>
+          <div class="proj-title">Covid Tracker</div>
+          <div class="proj-desc">Built and deployed a Spring Boot web application consuming a live COVID-19 REST API, displaying real-time global case statistics with auto-refresh, hosted on AWS EC2.</div>
+          <div class="proj-footer">
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-sage">AWS</span></div>
+            <a href="https://github.com/Munjal-Shah/Covid-Tracker" target="_blank" class="proj-link">↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 5: EDUCATION -->
+  <section class="page" id="education">
+    <div class="edu-layout">
+      <div class="edu-header">
+        <div>
+          <div class="edu-header-label">// 05 — Education</div>
+          <div class="edu-header-title">Where learning begins.</div>
+        </div>
+        <div class="edu-gpa-area">
+          <div class="edu-stat"><div class="edu-stat-num">6+</div><div class="edu-stat-label">Yrs Experience</div></div>
+          <div class="edu-stat"><div class="edu-stat-num">2</div><div class="edu-stat-label">Degrees</div></div>
+          <div class="edu-stat"><div class="edu-stat-num">16</div><div class="edu-stat-label">Key Courses</div></div>
+        </div>
+      </div>
+      <div class="edu-top">
+        <div class="edu-card-block">
+          <span class="edu-num">01</span>
+          <span class="edu-badge-pill">● Graduate</span>
+          <div class="edu-deg">Masters of Science<br>in Computer Science</div>
+          <div class="edu-school">SUNY Binghamton University</div>
+          <div class="edu-period">January 2019 — December 2020</div>
+          <div class="edu-courses">
+            <span class="ecourse">Design Patterns · Java</span>
+            <span class="ecourse">Algorithms</span>
+            <span class="ecourse">Data Mining</span>
+            <span class="ecourse">Database Systems</span>
+            <span class="ecourse">Operating Systems</span>
+            <span class="ecourse">Computer Architecture</span>
+            <span class="ecourse">Programming Languages</span>
+            <span class="ecourse">Software Eng. &amp; PM</span>
+          </div>
+        </div>
+        <div class="edu-card-block">
+          <span class="edu-num">02</span>
+          <span class="edu-badge-pill ug">Undergraduate</span>
+          <div class="edu-deg">Bachelor of Engineering<br>in Computer Engineering</div>
+          <div class="edu-school">Gujarat Technological University</div>
+          <div class="edu-period">June 2014 — May 2018</div>
+          <div class="edu-courses">
+            <span class="ecourse">Data Structures</span>
+            <span class="ecourse">OOP with C++</span>
+            <span class="ecourse">Java &amp; Advanced Java</span>
+            <span class="ecourse">Web Technology</span>
+            <span class="ecourse">Network Security</span>
+            <span class="ecourse">Artificial Intelligence</span>
+            <span class="ecourse">Python</span>
+            <span class="ecourse">Mobile Computing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 6: CONTACT -->
+  <section class="page" id="contact">
+    <div class="contact-inner">
+      <div class="contact-sec-label">// 06 — Let's Connect</div>
+      <div class="contact-heading">Let's<br><em>talk.</em></div>
+      <p class="contact-sub">Whether you have a role in mind, a project idea, or just want to talk tech — reach out. I'll get back to you promptly.</p>
+      <div class="contact-links">
+        <a href="mailto:shahmunjals@gmail.com" class="contact-link-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          shahmunjals@gmail.com
+        </a>
+        <a href="https://drive.google.com/file/d/12rn8jFy08SfwplGLAMCIx3nJa5PtaYZ1/view?usp=sharing" target="_blank" class="contact-link-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          Download Résumé
+        </a>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/munjalshah05/" target="_blank" class="soc-btn" title="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/Munjal-Shah" target="_blank" class="soc-btn" title="GitHub">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+        </a>
+        <a href="https://stackoverflow.com/users/11735931/munjal" target="_blank" class="soc-btn" title="Stack Overflow">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M15 21H3v-7H1v9h16v-9h-2v7zm-1.5-13.5l-8.03-3.99-.9 1.82 8.03 4zm-2.1-4.4l-7.1 5.43 1.14 1.5L13.62 5.6zM3 17h10v-2H3v2zM12.5 13l-9.5-1.5.3 1.98L12.8 15zm.5-4H3v2h10V9z"/></svg>
+        </a>
+      </div>
+      <div class="contact-footer-line">© 2025 · Munjal Shah · shahmunjal.com · SF Bay Area, CA</div>
+    </div>
+  </section>
+
+</div><!-- end scroll-container -->
+
+<script>
+  const pages = ['hero','about','experience','projects','education','contact'];
+  const sc = document.getElementById('scroll-container');
+  const dots = document.querySelectorAll('.dot');
+  const navAs = document.querySelectorAll('.nav-links a');
+  let current = 0;
+
+  function goTo(i) {
+    const target = document.getElementById(pages[i]);
+    sc.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+  }
+
+  function updateActive(i) {
+    current = i;
+    dots.forEach((d, j) => d.classList.toggle('active', j === i));
+    navAs.forEach((a, j) => a.classList.toggle('active', j === i));
+    document.querySelectorAll('.page').forEach((p, j) => {
+      if (j === i) p.classList.add('page-in');
+      else p.classList.remove('page-in');
+    });
+  }
+
+  // detect which page is in view
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        const idx = pages.indexOf(e.target.id);
+        if (idx !== -1) updateActive(idx);
+      }
+    });
+  }, { root: sc, threshold: 0.5 });
+
+  document.querySelectorAll('.page').forEach(p => io.observe(p));
+
+  // initial state
+  updateActive(0);
+  document.getElementById('hero').classList.add('page-in');
+
+  // experience tab switcher
+  window.selExp = function(id, el) {
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) {
+      // on mobile: toggle the tapped item, collapse others
+      const isAlreadySel = el.classList.contains('sel');
+      document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
+      if (!isAlreadySel) el.classList.add('sel');
+    } else {
+      // on desktop: switch right-side detail pane
+      document.querySelectorAll('.exp-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
+      document.getElementById('ep-' + id).classList.add('active');
+      el.classList.add('sel');
+    }
+  };
+</script>
+</body>
+</html>
