@@ -392,7 +392,7 @@
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       flex: 1;
     }
     .proj-card {
@@ -404,8 +404,8 @@
       cursor: default;
       position: relative; overflow: hidden;
     }
-    .proj-card:nth-child(3n) { border-right: none; }
-    .proj-card:nth-last-child(-n+3) { border-bottom: none; }
+    .proj-card:nth-child(2n) { border-right: none; }
+    .proj-card:nth-last-child(-n+2) { border-bottom: none; }
     .proj-card::after {
       content: ''; position: absolute; top: 0; left: 0;
       width: 100%; height: 2px;
@@ -511,10 +511,10 @@
       font-style: italic; letter-spacing: -0.01em;
     }
     .edu-gpa-area { display: flex; gap: 3rem; }
-    .edu-stat { text-align: center; }
+    .edu-stat { text-align: center; min-width: 4rem; }
     .edu-stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem; font-weight: 300; color: var(--ink); line-height: 1;
+      font-size: 2.5rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 0.35rem;
     }
     .edu-stat-label { font-size: 0.7rem; color: var(--ink4); font-family: 'Courier Prime', monospace; letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -716,9 +716,9 @@
         <div class="fact-row"><span class="fact-k">Degree</span><span class="fact-v">M.S. Computer Science</span></div>
         <div class="fact-row"><span class="fact-k">University</span><span class="fact-v">SUNY Binghamton</span></div>
         <div class="fact-row"><span class="fact-k">Location</span><span class="fact-v">SF Bay Area, CA</span></div>
-        <div class="fact-row"><span class="fact-k">Email</span><span class="fact-v"><a href="mailto:shahmunjals@gmail.com">shahmunjals@gmail.com</a></span></div>
+        <div class="fact-row"><span class="fact-k">Email</span><span class="fact-v"><a href="/cdn-cgi/l/email-protection#ec9f848d84819982868d809fac8b818d8580c28f8381"><span class="__cf_email__" data-cfemail="b1c2d9d0d9dcc4dfdbd0ddc2f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></span></div>
         <div class="fact-row"><span class="fact-k">Status</span><span class="fact-v open">● Open to Opportunities</span></div>
-        <a href="https://drive.google.com/file/d/12rn8jFy08SfwplGLAMCIx3nJa5PtaYZ1/view?usp=sharing" target="_blank" class="about-dl">
+        <a href="https://drive.google.com/file/d/1xIUndJxpXJSon6XNgtxhEejWsZnEwJSs/view?usp=sharing" target="_blank" class="about-dl">
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
           Download Résumé
         </a>
@@ -734,34 +734,26 @@
           <div class="exp-header-label">// 03 — Experience</div>
           <div class="exp-header-title">Where I've <em>worked.</em></div>
         </div>
-        <div class="exp-count">06</div>
+        <div style="display:flex;gap:1.5rem;align-items:center;">
+          <div class="edu-stat"><div class="edu-stat-num">6+</div><div class="edu-stat-label">Yrs Experience</div></div>
+          <div class="edu-stat"><div class="edu-stat-num">5</div><div class="edu-stat-label">Companies</div></div>
+        </div>
       </div>
       <div class="exp-body">
         <div class="exp-list-col">
-          <div class="exp-item sel" onclick="window.selExp('oraclehealth', this)">
-            <div class="exp-item-period">Oct 2025 — Present</div>
+          <div class="exp-item sel" onclick="window.selExp('oracle', this)">
+            <div class="exp-item-period">Jul 2021 — Present</div>
             <div class="exp-item-title">Senior Member of Technical Staff</div>
-            <div class="exp-item-co">Oracle Health · Semantic Index</div>
+            <div class="exp-item-co">Oracle</div>
             <div class="exp-inline-detail">
               <ul class="exp-inline-bullets">
-                <li>Building control plane services for Oracle Health's Semantic Index — powering semantic reasoning across clinical data domains including diagnoses, labs, and medications</li>
-                <li>Contributing to the knowledge graph layer that maps clinical entities from EHRs to SNOMED/ICD10 ontologies</li>
-                <li>Designing scalable backend services supporting real-time clinical data indexing underpinning AI-driven tools at enterprise scale</li>
+                <li><em>Currently:</em> Engineering AI-powered clinical infrastructure for Oracle Health's Semantic Index — building control plane services and knowledge graph layers that map EHR entities to SNOMED/ICD10 ontologies for real-time semantic reasoning</li>
+                <li>Architected microservices for Oracle BaseDB on OCI, engineering lifecycle ops — provisioning, patching, backup &amp; recovery — at cloud scale</li>
+                <li>Reduced backup deletion latency by ~80% through algorithmic optimization and minimizing object storage API call overhead</li>
+                <li>Led multi-standby architecture for BaseDB enabling high availability and cross-region disaster recovery; drove zero-downtime bi-weekly production releases via TeamCity CI/CD</li>
+                <li>Mentored junior engineers across multiple initiatives, accelerating onboarding and enabling effective cross-team delivery</li>
               </ul>
-              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">Knowledge Graphs</span></div>
-            </div>
-          </div>
-          <div class="exp-item" onclick="window.selExp('oraclebasedb', this)">
-            <div class="exp-item-period">Jul 2021 — Oct 2025</div>
-            <div class="exp-item-title">Senior Member of Technical Staff</div>
-            <div class="exp-item-co">Oracle · BaseDB Control Plane</div>
-            <div class="exp-inline-detail">
-              <ul class="exp-inline-bullets">
-                <li>Contributed to Oracle Base Database Service (BaseDB) on OCI, engineering lifecycle operations — provisioning, patching, backup and recovery — at cloud scale</li>
-                <li>Engineered CLI commands to automate renaming and purging of obsolete database backups, optimizing storage across distributed OCI infrastructure</li>
-                <li>Delivered zero-downtime software deployments across production OCI environments using TeamCity CI/CD pipelines</li>
-              </ul>
-              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">TeamCity</span><span class="etag">Bitbucket</span></div>
+              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST APIs</span><span class="etag">Microservices</span><span class="etag">Knowledge Graphs</span><span class="etag">TeamCity</span></div>
             </div>
           </div>
           <div class="exp-item" onclick="window.selExp('benefitfocus', this)">
@@ -770,10 +762,10 @@
             <div class="exp-item-co">Benefitfocus</div>
             <div class="exp-inline-detail">
               <ul class="exp-inline-bullets">
-                <li>Configured and validated software applications end-to-end, ensuring functional correctness across multiple environments</li>
-                <li>Identified and resolved logic defects through systematic debugging, improving codebase stability</li>
+                <li>Delivered new backend features and performance-optimized existing REST APIs, improving system throughput and response latency for production services</li>
+                <li>Collaborated with QA and DevOps to enforce deployment stability and maintain high service availability across CI/CD release pipelines</li>
               </ul>
-              <div class="exp-inline-tags"><span class="etag">Spring Boot</span><span class="etag">Java</span><span class="etag">REST API</span><span class="etag">Git</span></div>
+              <div class="exp-inline-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">REST APIs</span><span class="etag">CI/CD</span><span class="etag">Jira</span></div>
             </div>
           </div>
           <div class="exp-item" onclick="window.selExp('skillrelays', this)">
@@ -782,104 +774,88 @@
             <div class="exp-item-co">Skill Relays</div>
             <div class="exp-inline-detail">
               <ul class="exp-inline-bullets">
-                <li>Architected and delivered a full-stack CMS platform enabling administrators to manage content and volunteer postings independently</li>
-                <li>Built end-to-end CI/CD pipelines on Azure and debugged 5,000+ lines of legacy code</li>
+                <li>Built a dynamic CMS platform with Angular and Spring Boot; implemented CI/CD pipelines on Azure DevOps, improving deployment frequency across five internal projects</li>
               </ul>
-              <div class="exp-inline-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">Azure</span></div>
+              <div class="exp-inline-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">Node.js</span><span class="etag">Azure</span><span class="etag">CI/CD</span></div>
             </div>
           </div>
           <div class="exp-item" onclick="window.selExp('suny', this)">
             <div class="exp-item-period">Sep 2019 — May 2020</div>
             <div class="exp-item-title">Research Project Assistant</div>
-            <div class="exp-item-co">The Research Foundation for SUNY</div>
+            <div class="exp-item-co">SUNY Binghamton University</div>
             <div class="exp-inline-detail">
               <ul class="exp-inline-bullets">
-                <li>Maintained university web infrastructure using PHP and OmniUpdate CMS</li>
-                <li>Provided technical support to 50+ faculty and staff remotely and on-site</li>
+                <li>Maintained university web infrastructure using PHP and OmniUpdate CMS; provided technical support to 50+ faculty and staff remotely and on-site</li>
               </ul>
-              <div class="exp-inline-tags"><span class="etag">PHP</span><span class="etag">JavaScript</span><span class="etag">HTML/CSS</span></div>
+              <div class="exp-inline-tags"><span class="etag">PHP</span><span class="etag">OmniUpdate CMS</span><span class="etag">JavaScript</span></div>
             </div>
           </div>
           <div class="exp-item" onclick="window.selExp('elite', this)">
-            <div class="exp-item-period">Jun 2017 — Nov 2018</div>
+            <div class="exp-item-period">Jul 2018 — Nov 2018</div>
             <div class="exp-item-title">Jr. Software Engineer</div>
             <div class="exp-item-co">Elite Infoworld</div>
             <div class="exp-inline-detail">
               <ul class="exp-inline-bullets">
-                <li>Built customer loyalty and in-app purchase features for an Android application</li>
-                <li>Deployed a scalable AWS S3 storage solution and a full job-posting app for seekers and employers</li>
+                <li>Developed loyalty rewards and in-app purchase modules for Android apps with 10K+ active users; implemented AWS S3 for scalable data storage and backend integrations</li>
               </ul>
-              <div class="exp-inline-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS</span></div>
+              <div class="exp-inline-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS S3</span><span class="etag">Git</span></div>
             </div>
           </div>
         </div>
         <div class="exp-detail-col">
-          <div class="exp-pane active" id="ep-oraclehealth">
-            <div class="exp-detail-period">October 2025 — Present</div>
+          <div class="exp-pane active" id="ep-oracle">
+            <div class="exp-detail-period">July 2021 — Present</div>
             <div class="exp-detail-title">Senior Member of<br><em>Technical Staff</em></div>
-            <div class="exp-detail-co">Oracle Health · Semantic Index Control Plane</div>
+            <div class="exp-detail-co">Oracle</div>
+            <div style="font-size:0.78rem;color:var(--ink3);margin-bottom:0.9rem;font-style:italic;">Currently: Oracle Health — Semantic Index &nbsp;|&nbsp; Previously: Base Database Service (BaseDB)</div>
             <ul class="exp-bullets">
-              <li>Building control plane services for Oracle Health's Semantic Index — the foundational AI infrastructure powering semantic reasoning across clinical data domains including diagnoses, labs, medications, and payer rules</li>
-              <li>Contributing to the knowledge graph layer that maps clinical entities from EHRs to SNOMED/ICD10 ontologies, enabling context-aware insights for Oracle Health's Clinical AI Agent</li>
-              <li>Designing and maintaining scalable backend services supporting real-time clinical data indexing and retrieval, underpinning AI-driven tools that reduce physician documentation burden at enterprise scale</li>
+              <li>Engineering AI-powered clinical infrastructure for Oracle Health's Semantic Index — building control plane services and knowledge graph layers that map EHR entities to SNOMED/ICD10 ontologies for real-time semantic reasoning across diagnoses, labs, and medications at enterprise scale</li>
+              <li>Architected and shipped microservices for Oracle Base Database Service (BaseDB) on OCI, engineering lifecycle operations — provisioning, patching, backup and recovery — for enterprise databases at cloud scale</li>
+              <li>Reduced backup deletion latency by ~80% through algorithmic optimization and minimizing object storage API call overhead, directly lowering operational costs for customers at scale</li>
+              <li>Led multi-standby architecture for BaseDB enabling high availability and cross-region disaster recovery; drove zero-downtime bi-weekly production releases via TeamCity CI/CD</li>
+              <li>Mentored junior engineers across multiple initiatives, accelerating onboarding velocity and enabling effective cross-team delivery on distributed systems projects</li>
             </ul>
-            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">Clinical NLP</span><span class="etag">Knowledge Graphs</span></div>
-          </div>
-          <div class="exp-pane" id="ep-oraclebasedb">
-            <div class="exp-detail-period">July 2021 — October 2025</div>
-            <div class="exp-detail-title">Senior Member of<br><em>Technical Staff</em></div>
-            <div class="exp-detail-co">Oracle · Base Database Service Control Plane</div>
-            <ul class="exp-bullets">
-              <li>Contributed to the control plane of Oracle Base Database Service (BaseDB) on OCI, engineering lifecycle operations — provisioning, patching, backup and recovery — for customer Oracle databases at cloud scale</li>
-              <li>Engineered CLI commands to automate renaming and purging of obsolete database backups, optimizing storage utilization across distributed OCI infrastructure</li>
-              <li>Developed and maintained RESTful control plane APIs managing database system configurations and operational workflows across OCI regions</li>
-              <li>Delivered large-scale, zero-downtime software deployments across production OCI environments using TeamCity CI/CD pipelines</li>
-            </ul>
-            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST API</span><span class="etag">TeamCity</span><span class="etag">Bitbucket</span><span class="etag">Shepherd</span></div>
+            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">OCI</span><span class="etag">REST APIs</span><span class="etag">Microservices</span><span class="etag">Knowledge Graphs</span><span class="etag">Clinical NLP</span><span class="etag">TeamCity</span><span class="etag">Git</span><span class="etag">Bitbucket</span></div>
           </div>
           <div class="exp-pane" id="ep-benefitfocus">
             <div class="exp-detail-period">May 2021 — July 2021</div>
             <div class="exp-detail-title">Software<br><em>Engineer</em></div>
             <div class="exp-detail-co">Benefitfocus</div>
             <ul class="exp-bullets">
-              <li>Configured and validated software applications end-to-end, ensuring functional correctness across multiple environments</li>
-              <li>Identified and resolved logic and coding defects through systematic debugging, improving overall codebase stability</li>
-              <li>Monitored production systems proactively, reducing incident response time by diagnosing root causes and applying targeted fixes</li>
+              <li>Delivered new backend features and performance-optimized existing REST APIs, improving system throughput and response latency for production services</li>
+              <li>Collaborated with QA and DevOps to enforce deployment stability and maintain high service availability across CI/CD release pipelines</li>
             </ul>
-            <div class="exp-tags"><span class="etag">Spring Boot</span><span class="etag">Java</span><span class="etag">REST API</span><span class="etag">Git</span></div>
+            <div class="exp-tags"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">REST APIs</span><span class="etag">CI/CD</span><span class="etag">Jira</span><span class="etag">Bitbucket</span></div>
           </div>
           <div class="exp-pane" id="ep-skillrelays">
             <div class="exp-detail-period">June 2020 — December 2020</div>
             <div class="exp-detail-title">Full Stack<br><em>Developer Intern</em></div>
             <div class="exp-detail-co">Skill Relays</div>
             <ul class="exp-bullets">
-              <li>Architected and delivered a full-stack content management platform enabling administrators to publish volunteer opportunities and manage site content independently</li>
-              <li>Built and maintained end-to-end CI/CD pipelines on Azure, automating the full SDLC from commit to production</li>
-              <li>Integrated Maven dependency management across 5 internal applications, standardizing builds and reducing integration friction</li>
-              <li>Debugged and refactored 5,000+ lines of legacy code, improving maintainability and eliminating critical runtime errors</li>
+              <li>Built a dynamic CMS platform with Angular and Spring Boot enabling administrators to independently publish and manage content</li>
+              <li>Implemented end-to-end CI/CD pipelines on Azure DevOps, improving deployment frequency and consistency across five internal projects</li>
             </ul>
-            <div class="exp-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">NodeJS</span><span class="etag">Azure</span></div>
+            <div class="exp-tags"><span class="etag">Angular</span><span class="etag">Spring Boot</span><span class="etag">TypeScript</span><span class="etag">Node.js</span><span class="etag">Azure</span><span class="etag">CI/CD</span></div>
           </div>
           <div class="exp-pane" id="ep-suny">
             <div class="exp-detail-period">September 2019 — May 2020</div>
             <div class="exp-detail-title">Research Project<br><em>Assistant</em></div>
-            <div class="exp-detail-co">The Research Foundation for SUNY</div>
+            <div class="exp-detail-co">SUNY Binghamton University</div>
             <ul class="exp-bullets">
-              <li>Maintained and enhanced university web infrastructure using PHP and OmniUpdate CMS, improving content accuracy across departmental pages</li>
+              <li>Maintained university web infrastructure using PHP and OmniUpdate CMS, improving content accuracy across departmental pages</li>
               <li>Provided technical support to 50+ faculty and staff, resolving hardware and software issues both remotely and on-site</li>
             </ul>
-            <div class="exp-tags"><span class="etag">PHP</span><span class="etag">JavaScript</span><span class="etag">HTML/CSS</span><span class="etag">OmniUpdate</span></div>
+            <div class="exp-tags"><span class="etag">PHP</span><span class="etag">OmniUpdate CMS</span><span class="etag">JavaScript</span><span class="etag">HTML/CSS</span></div>
           </div>
           <div class="exp-pane" id="ep-elite">
-            <div class="exp-detail-period">June 2017 — November 2018</div>
+            <div class="exp-detail-period">July 2018 — November 2018</div>
             <div class="exp-detail-title">Jr. Software<br><em>Engineer</em></div>
             <div class="exp-detail-co">Elite Infoworld</div>
             <ul class="exp-bullets">
-              <li>Developed customer loyalty and in-app purchase features for an existing Android application, directly improving user retention and monetization</li>
-              <li>Designed and deployed a scalable AWS S3 data storage solution in production, improving reliability and access speed for application assets</li>
-              <li>Built a full-featured job-posting Android app from scratch — supporting both job seekers and employers — from requirements gathering through deployment</li>
+              <li>Developed loyalty rewards and in-app purchase modules for Android apps with 10K+ active users</li>
+              <li>Implemented AWS S3 data storage and backend integrations for scalable asset management and improved reliability</li>
             </ul>
-            <div class="exp-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS</span><span class="etag">Android Studio</span></div>
+            <div class="exp-tags"><span class="etag">Android</span><span class="etag">Java</span><span class="etag">AWS S3</span><span class="etag">Git</span></div>
           </div>
         </div>
       </div>
@@ -894,61 +870,43 @@
           <div class="proj-sec-label">// 04 — Projects</div>
           <div class="proj-sec-title">Selected <em>Work</em></div>
         </div>
-        <div class="proj-count">06</div>
+        <div class="proj-count">04</div>
       </div>
       <div class="projects-grid">
         <div class="proj-card">
           <div class="proj-num">01</div>
-          <div class="proj-title">Flight Cancellations &amp; Delays Analysis</div>
-          <div class="proj-desc">Engineered a data pipeline using Python and MongoDB to analyze 5M+ flight records from 2015, surfacing actionable patterns in cancellation causes and delay hotspots across US carriers.</div>
+          <div class="proj-title">AI Stock Trader</div>
+          <div class="proj-desc">Built a Spring Boot paper-trading engine combining RSI, Moving Average Crossover, and Momentum signals to autonomously buy/sell FAANG stocks across a $10K demo portfolio, with automated stop-loss and take-profit risk management.</div>
           <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Python</span><span class="pchip c-sage">MongoDB</span></div>
-            <a href="https://github.com/Munjal-Shah/Analysis-of-Flight-Cancelation-Delays-in-2015" target="_blank" class="proj-link">↗</a>
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">Spring Boot</span><span class="pchip c-sage">REST APIs</span></div>
+            <a href="https://github.com/Munjal-Shah/stock-trader" target="_blank" class="proj-link">↗</a>
           </div>
         </div>
         <div class="proj-card">
           <div class="proj-num">02</div>
-          <div class="proj-title">Data Mining Algorithms</div>
-          <div class="proj-desc">Implemented and compared PCA, ICA, and K-Means clustering on real-world datasets, reducing feature dimensionality while preserving key variance for downstream analysis.</div>
+          <div class="proj-title">FlightAI — Cheap Flight Tracker</div>
+          <div class="proj-desc">AI-powered flight search app integrating the Claude (Anthropic) API to intelligently rank 300+ airport routes using a composite scoring algorithm weighted by price, stops, and duration.</div>
           <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Python</span><span class="pchip c-slate">PCA/ICA</span></div>
-            <a href="https://github.com/Munjal-Shah/Data-Mining-CS535" target="_blank" class="proj-link">↗</a>
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">Spring Boot</span><span class="pchip c-sage">Claude API</span></div>
+            <a href="https://github.com/Munjal-Shah/cheap-flights" target="_blank" class="proj-link">↗</a>
           </div>
         </div>
         <div class="proj-card">
           <div class="proj-num">03</div>
-          <div class="proj-title">Design Patterns in Java</div>
-          <div class="proj-desc">Built a reference implementation of 15+ GoF design patterns in Java, each demonstrated in a realistic project context — a portfolio of architectural best practices.</div>
+          <div class="proj-title">Covid-19 Tracker</div>
+          <div class="proj-desc">Built and deployed a Spring Boot web app consuming a live COVID-19 REST API with auto-refresh, displaying real-time global case statistics; hosted on AWS EC2.</div>
           <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">OOP</span></div>
-            <a href="https://github.com/Munjal-Shah/Design-Patterns" target="_blank" class="proj-link">↗</a>
+            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">Spring Boot</span><span class="pchip c-sage">AWS EC2</span></div>
+            <a href="https://github.com/Munjal-Shah/Covid-Tracker" target="_blank" class="proj-link">↗</a>
           </div>
         </div>
         <div class="proj-card">
           <div class="proj-num">04</div>
-          <div class="proj-title">Currency Converter</div>
-          <div class="proj-desc">Developed a Spring Boot web application that fetches real-time exchange rates via REST API, featuring live data refresh, multi-currency support, and a clean responsive interface.</div>
+          <div class="proj-title">Flight Cancellation &amp; Delay Analysis</div>
+          <div class="proj-desc">Engineered a data pipeline processing 5M+ US flight records from Kaggle using Python and MongoDB, applying Dijkstra's algorithm to surface delay patterns and cancellation hotspots across carriers.</div>
           <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-slate">Spring Boot</span></div>
-            <a href="https://github.com/Munjal-Shah/Currency-Converter" target="_blank" class="proj-link">↗</a>
-          </div>
-        </div>
-        <div class="proj-card">
-          <div class="proj-num">05</div>
-          <div class="proj-title">Python Projects Bundle</div>
-          <div class="proj-desc">Shipped three independent Python utilities — a URL shortener, a YouTube video downloader, and a social media profile scraper — each with a clean CLI interface and robust error handling.</div>
-          <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Python</span></div>
-            <a href="https://github.com/Munjal-Shah/PyProjects" target="_blank" class="proj-link">↗</a>
-          </div>
-        </div>
-        <div class="proj-card">
-          <div class="proj-num">06</div>
-          <div class="proj-title">Covid Tracker</div>
-          <div class="proj-desc">Built and deployed a Spring Boot web application consuming a live COVID-19 REST API, displaying real-time global case statistics with auto-refresh, hosted on AWS EC2.</div>
-          <div class="proj-footer">
-            <div class="proj-chips"><span class="pchip c-gold">Java</span><span class="pchip c-sage">AWS</span></div>
-            <a href="https://github.com/Munjal-Shah/Covid-Tracker" target="_blank" class="proj-link">↗</a>
+            <div class="proj-chips"><span class="pchip c-gold">Python</span><span class="pchip c-sage">MongoDB</span></div>
+            <a href="https://github.com/Munjal-Shah/Analysis-of-Flight-Cancelation-Delays-in-2015" target="_blank" class="proj-link">↗</a>
           </div>
         </div>
       </div>
@@ -964,7 +922,7 @@
           <div class="edu-header-title">Where learning begins.</div>
         </div>
         <div class="edu-gpa-area">
-          <div class="edu-stat"><div class="edu-stat-num">6+</div><div class="edu-stat-label">Yrs Experience</div></div>
+          <div class="edu-stat"><div class="edu-stat-num">6+</div><div class="edu-stat-label">Yrs Studying</div></div>
           <div class="edu-stat"><div class="edu-stat-num">2</div><div class="edu-stat-label">Degrees</div></div>
           <div class="edu-stat"><div class="edu-stat-num">16</div><div class="edu-stat-label">Key Courses</div></div>
         </div>
@@ -1015,11 +973,11 @@
       <div class="contact-heading">Let's<br><em>talk.</em></div>
       <p class="contact-sub">Whether you have a role in mind, a project idea, or just want to talk tech — reach out. I'll get back to you promptly.</p>
       <div class="contact-links">
-        <a href="mailto:shahmunjals@gmail.com" class="contact-link-item">
+        <a href="/cdn-cgi/l/email-protection#acdfc4cdc4c1d9c2c6cdc0dfeccbc1cdc5c082cfc3c1" class="contact-link-item">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          shahmunjals@gmail.com
+          <span class="__cf_email__" data-cfemail="f5869d949d98809b9f949986b59298949c99db969a98">[email&#160;protected]</span>
         </a>
-        <a href="https://drive.google.com/file/d/12rn8jFy08SfwplGLAMCIx3nJa5PtaYZ1/view?usp=sharing" target="_blank" class="contact-link-item">
+        <a href="https://drive.google.com/file/d/1xIUndJxpXJSon6XNgtxhEejWsZnEwJSs/view?usp=sharing" target="_blank" class="contact-link-item">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
           Download Résumé
         </a>
@@ -1032,9 +990,6 @@
         <a href="https://github.com/Munjal-Shah" target="_blank" class="soc-btn" title="GitHub">
           <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
         </a>
-        <a href="https://stackoverflow.com/users/11735931/munjal" target="_blank" class="soc-btn" title="Stack Overflow">
-          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M15 21H3v-7H1v9h16v-9h-2v7zm-1.5-13.5l-8.03-3.99-.9 1.82 8.03 4zm-2.1-4.4l-7.1 5.43 1.14 1.5L13.62 5.6zM3 17h10v-2H3v2zM12.5 13l-9.5-1.5.3 1.98L12.8 15zm.5-4H3v2h10V9z"/></svg>
-        </a>
       </div>
       <div class="contact-footer-line">© 2025 · Munjal Shah · shahmunjal.com · SF Bay Area, CA</div>
     </div>
@@ -1042,7 +997,7 @@
 
 </div><!-- end scroll-container -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const pages = ['hero','about','experience','projects','education','contact'];
   const sc = document.getElementById('scroll-container');
   const dots = document.querySelectorAll('.dot');
@@ -1087,15 +1042,4 @@
       // on mobile: toggle the tapped item, collapse others
       const isAlreadySel = el.classList.contains('sel');
       document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
-      if (!isAlreadySel) el.classList.add('sel');
-    } else {
-      // on desktop: switch right-side detail pane
-      document.querySelectorAll('.exp-pane').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
-      document.getElementById('ep-' + id).classList.add('active');
-      el.classList.add('sel');
-    }
-  };
-</script>
-</body>
-</html>
+      if (!isAlreadySel) el.classList
