@@ -1039,7 +1039,17 @@
   window.selExp = function(id, el) {
     const isMobile = window.innerWidth <= 900;
     if (isMobile) {
-      // on mobile: toggle the tapped item, collapse others
       const isAlreadySel = el.classList.contains('sel');
       document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
-      if (!isAlreadySel) el.classList
+      if (!isAlreadySel) el.classList.add('sel');
+    } else {
+      document.querySelectorAll('.exp-item').forEach(n => n.classList.remove('sel'));
+      el.classList.add('sel');
+      document.querySelectorAll('.exp-pane').forEach(p => p.classList.remove('active'));
+      const pane = document.getElementById('ep-' + id);
+      if (pane) pane.classList.add('active');
+    }
+  };
+</script>
+</body>
+</html>
